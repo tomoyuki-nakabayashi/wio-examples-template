@@ -1,0 +1,40 @@
+[package]
+name = "wio_examples"
+version = "0.1.0"
+authors = ["tomoyuki-nakabayashi <tomo.wait.for.it.yuki@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+wio_terminal = "0.3"
+panic-halt = "0.2"
+cortex-m = "0.6.4"
+cortex-m-rt = "0.6.13"
+nb = "0.1"
+accelerometer = "0.12.0"
+embedded-graphics = "0.6.2"
+wio_splash = { path = "../wio_splash", optional = true }
+heapless = "0.5.6"
+
+microfft = { version = "0.3.1", optional = true }
+micromath = { version = "1.1.0", optional = true }
+
+[features]
+splash = ["wio_splash"]
+app = ["microfft", "micromath"]
+
+[[example]]
+name = "9-4-splash"
+required-features = ["splash"]
+
+[[example]]
+name = "accelerometer_lcd"
+required-features = ["app"]
+
+
+[[example]]
+name = "10-1-stop_watch"
+required-features = ["app"]
+
+[[example]]
+name = "10-2-mic_fft"
+required-features = ["app"]
