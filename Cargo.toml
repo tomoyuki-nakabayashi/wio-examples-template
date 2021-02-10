@@ -12,19 +12,22 @@ cortex-m-rt = "0.6.13"
 nb = "0.1"
 accelerometer = "0.12.0"
 embedded-graphics = "0.6.2"
-wio_splash = { path = "../wio_splash", optional = true }
 heapless = "0.5.6"
 
+# 7章でコメントアウトを外して下さい
+# wio_splash = { path = "../wio_splash", optional = true }
 microfft = { version = "0.3.1", optional = true }
 micromath = { version = "1.1.0", optional = true }
 
 [features]
-splash = ["wio_splash"]
+# 7章でコメントアウトを外して下さい
+# splash = ["wio_splash"]
 app = ["microfft", "micromath"]
 
-[[example]]
-name = "9-4-splash"
-required-features = ["splash"]
+# 7章でコメントアウトを外して下さい
+# [[example]]
+# name = "9-4-splash"
+# required-features = ["splash"]
 
 [[example]]
 name = "accelerometer_lcd"
