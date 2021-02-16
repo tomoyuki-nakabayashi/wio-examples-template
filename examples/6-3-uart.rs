@@ -1,4 +1,4 @@
-//! 8-3 シリアル入出力/UARTのサンプルコードです。
+//! 6-3 シリアル入出力/UARTのサンプルコードです。
 //! ホストPCのシリアルターミナルに
 //! ```text
 //! hello world
@@ -8,7 +8,7 @@
 //!
 //! ### 実行方法
 //! ```sh
-//! $ cargo hf2 --example serial
+//! $ cargo hf2 --example 6-3-uart
 //! ```
 
 #![no_std]
@@ -26,13 +26,13 @@ use wio::{entry, Pins, Sets};
 #[entry]
 fn main() -> ! {
     let mut peripherals = Peripherals::take().unwrap();
-    // TODO: クロックを初期化します
+    // クロックを初期化する
 
-    // TODO: UARTドライバオブジェクトを初期化します
+    // TODO: UARTドライバオブジェクトを初期化する
 
-    // TODO: 「hello world」と出力します
+    // TODO: 「hello world」と出力する
 
-    // TODO: 「this is UART example!」と出力します
+    // TODO: 「this is UART example!」と出力する
 
     loop {}
 }

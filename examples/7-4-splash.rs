@@ -1,9 +1,9 @@
-//! 9-4 Wio TerminalのLCDにHello World!のサンプルコードです。
+//! 7-4 Wio TerminalのLCDにHello World!のサンプルコードです。
 //! Wio Terminal の LCD にスプラッシュ画面を表示します。
 //!
 //! ### 実行方法
 //! ```sh
-//! $ cargo hf2 --example draw_wio_splash --feature="splash"
+//! $ cargo hf2 --example 7-4-splash
 //! ```
 
 #![no_std]
@@ -19,7 +19,8 @@ use wio::hal::delay::Delay;
 use wio::pac::{CorePeripherals, Peripherals};
 use wio::prelude::*;
 use wio::{entry, Pins};
-use wio_splash::WioSplash; // 追加
+// WioSplash をインポートする
+use wio_splash::WioSplash;
 
 #[entry]
 fn main() -> ! {
@@ -35,7 +36,7 @@ fn main() -> ! {
     let mut delay = Delay::new(core.SYST, &mut clocks);
     let mut sets = Pins::new(peripherals.PORT).split();
 
-    // ディスプレイドライバを初期化します
+    // ディスプレイドライバを初期化する
     let (mut display, _backlight) = sets
         .display
         .init(
@@ -48,7 +49,7 @@ fn main() -> ! {
         )
         .unwrap();
 
-    // TODO: スプラッシュ画面を描画します
+    // TODO: スプラッシュ画面を描画する
 
     loop {}
 }

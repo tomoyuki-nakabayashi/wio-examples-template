@@ -1,9 +1,9 @@
-//! 8-4 タイマ/割り込みのサンプルコードです。
+//! 6-4 タイマ/割り込みのサンプルコードです。
 //! 割り込みでLチカしながら、ホストPCのシリアルターミナルに入力した内容をそのまま出力します。
 //!
 //! ### 実行方法
 //! ```sh
-//! $ cargo hf2 --example timer_interrupt
+//! $ cargo hf2 --example 6-4-timer_interrupt
 //! ```
 
 #![no_std]
@@ -21,13 +21,17 @@ use wio::prelude::*;
 use wio::{entry, Pins, Sets};
 use wio_examples::Led;
 
-// TODO: main() 関数と割り込みハンドラとで共有するリソースです
-
+// main()関数と割り込みハンドラとで共有するリソース
+struct Ctx {
+    led: Led,
+    tc3: TimerCounter<TC3>,
+}
+static mut CTX: Option<Ctx> = None;
 
 #[entry]
 fn main() -> ! {
     let mut peripherals = Peripherals::take().unwrap();
-    // クロックを初期化します
+    // クロックを初期化する
     let mut clocks = GenericClockController::with_external_32kosc(
         peripherals.GCLK,
         &mut peripherals.MCLK,
@@ -36,7 +40,7 @@ fn main() -> ! {
         &mut peripherals.NVMCTRL,
     );
 
-    // UARTドライバオブジェクトを初期化します
+    // UARTドライバオブジェクトを初期化する
     let mut sets: Sets = Pins::new(peripherals.PORT).split();
     let mut serial = sets.uart.init(
         &mut clocks,
@@ -46,22 +50,22 @@ fn main() -> ! {
         &mut sets.port,
     );
 
-    // TODO: 2 MHz のクロックを取得します。
+    // TODO: 2MHzのクロックを取得する
 
-    // TODO: TC3 へのクロックを 2 MHz にします
+    // TODO: TC3へのクロックを2MHzにする
 
-    // TODO: TC3 ドライバオブジェクトを初期化します
+    // TODO: TC3ドライバオブジェクトを初期化する
 
-    // TODO: 割り込みコントローラで TC3 の割り込み通知を有効化します
+    // TODO: 割り込みコントローラで、TC3の割り込み通知を有効化する
 
-    // TODO: 1 秒のカウントを開始し、TC3 が割り込みを発生するようにします
+    // TODO: 1秒のカウントを開始して、TC3が割り込みが発生するようにする
 
-    // TODO: 割り込みハンドラと共有するリソースを格納します
+    // TODO: 割り込みハンドラと共有するリソースを格納する
 
+    // TODO: シリアルターミナルにechoし続ける
     loop {
-        // TODO: シリアルターミナルにechoし続けます
-
+        
     }
 }
 
-// TODO: TC3 の割り込みハンドラを実装します
+// TODO: TC3 の割り込みハンドラを実装する

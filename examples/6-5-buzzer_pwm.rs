@@ -1,9 +1,9 @@
-//! 8-5 ブザー/PWMのサンプルコードです。
+//! 6-5 ブザー/PWMのサンプルコードです。
 //! ドレミファソラシドと1秒ずつ鳴ります。
 //!
 //! ### 実行方法
 //! ```sh
-//! $ cargo hf2 --example buzzer
+//! $ cargo hf2 --example 6-5-buzzer_pwm
 //! ```
 
 #![no_std]
@@ -22,7 +22,7 @@ use wio::{entry, Pins};
 #[entry]
 fn main() -> ! {
     let mut peripherals = Peripherals::take().unwrap();
-    // クロックを初期化します
+    // クロックを初期化する
     let core = CorePeripherals::take().unwrap();
     let mut clocks = GenericClockController::with_external_32kosc(
         peripherals.GCLK,
@@ -34,18 +34,24 @@ fn main() -> ! {
 
     let mut delay = Delay::new(core.SYST, &mut clocks);
 
+    // ブザー（PWM）ドライバオブジェクトを初期化する
     let mut sets = Pins::new(peripherals.PORT).split();
-    // TODO: ブザー (PWM) ドライバオブジェクトを初期化します
+    let mut buzzer = sets.buzzer.init(
+        &mut clocks,
+        peripherals.TCC0,
+        &mut peripherals.MCLK,
+        &mut sets.port,
+    );
 
-    //           ド   レ    ミ   ファ  ソ   ラ   シ    ド
+    //           ド   レ    ミ   ファ  ソ   ラ   シ   ド
     let freqs = [261, 294, 329, 349, 392, 440, 494, 523];
     loop {
         for freq in freqs.iter() {
-            // TODO: 周期 (周波数) を設定します
+            // TODO: 周期（周波数）を設定する
 
-            // TODO: デューティ比を 50% に設定します
+            // TODO: デューティ比を50%に設定する
 
-            // TODO: 1秒鳴らして止めます
+            // TODO: 1秒鳴らして止める
 
         }
     }

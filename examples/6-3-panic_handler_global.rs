@@ -1,9 +1,9 @@
-//! 8-3 シリアル入出力/UARTのサンプルコードです。
+//! 6-3 シリアル入出力/UARTのサンプルコードです。
 //! グローバル変数を使ったパニックハンドラ実装です。
 //!
 //! ### 実行方法
 //! ```sh
-//! $ cargo hf2 --example global_panic_handler
+//! $ cargo hf2 --example 6-3-panic_handler_global
 //! ```
 
 #![no_std]
@@ -20,8 +20,10 @@ use wio::pac::Peripherals;
 use wio::prelude::*;
 use wio::{entry, Pins, Sets};
 
-// TODO: グローバル変数を初期化します
-
+// 絶対に初期化しないといけないので、いったんNoneで初期化する
+static mut UART: Option<
+    UART2<Sercom2Pad1<Pb27<PfC>>, Sercom2Pad0<Pb26<PfC>>, (), ()>,
+> = None;
 
 #[entry]
 fn main() -> ! {
@@ -43,12 +45,12 @@ fn main() -> ! {
         &mut sets.port,
     );
 
-    // TODO: グローバル変数に格納されているNoneをSomeで上書きします
+    // TODO: グローバル変数に格納されているNoneをSomeで上書きする
 
-    // TODO: わざとNoneをunwrap()してパニックを発生させます
+    // TODO: わざとNoneをunwrap()してパニックを発生させる
 
     loop {}
 }
 
-// TODO: パニックハンドラを実装します
+// TODO: パニックハンドラを実装する
 

@@ -1,9 +1,9 @@
-//! 8-5 ブザー/PWMのサンプルコードです。
+//! 6-5 ブザー/PWMのサンプルコードです。
 //! 一定の音がなり続けます
 //!
 //! ### 実行方法
 //! ```sh
-//! $ cargo hf2 --example simple_buzzer
+//! $ cargo hf2 --example 6-5-buzzer_simple
 //! ```
 
 #![no_std]
@@ -32,9 +32,9 @@ fn main() -> ! {
     );
     let mut delay = Delay::new(core.SYST, &mut clocks);
     let mut pins = Pins::new(peripherals.PORT);
-    // TODO: ブザーピンを出力に設定します
+    // TODO: ブザーピンを出力に設定する
 
-    // TODO: ブザーを鳴らします
+    // TODO: ブザーを鳴らす
     loop {
 
     }

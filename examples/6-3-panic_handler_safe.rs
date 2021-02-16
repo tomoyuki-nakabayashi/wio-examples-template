@@ -1,9 +1,9 @@
-//! 8-3 シリアル入出力/UARTのサンプルコードです。
+//! 6-3 シリアル入出力/UARTのサンプルコードです。
 //! MutexとRefCellを使って安全にグローバル変数を共有するパニックハンドラ実装です。
 //!
 //! ### 実行方法
 //! ```sh
-//! $ cargo hf2 --example safe_panic_handler
+//! $ cargo hf2 --example 6-3-panic_handler_safe
 //! ```
 
 #![no_std]
@@ -23,8 +23,12 @@ use wio::pac::Peripherals;
 use wio::prelude::*;
 use wio::{entry, Pins, Sets};
 
-// TODO: グローバル変数を初期化します
-
+// 絶対に初期化しないといけないので、いったんNoneを持つRefCellで初期化する
+static UART: Mutex<
+    RefCell<
+        Option<UART2<Sercom2Pad1<Pb27<PfC>>, Sercom2Pad0<Pb26<PfC>>, (), ()>>,
+    >,
+> = Mutex::new(RefCell::new(None));
 
 #[entry]
 fn main() -> ! {
@@ -46,9 +50,9 @@ fn main() -> ! {
         &mut sets.port,
     );
 
-    // TODO: グローバル変数に格納されているNoneを安全にSomeで上書きします
+    // TODO: グローバル変数に格納されているNoneを安全にSomeで上書きする
 
-    // TODO: わざとNoneをunwrap()してパニックを発生させます
+    // TODO: わざとNoneをunwrap()してパニックを発生させる
 
     let none: Option<usize> = None;
     none.unwrap();
@@ -58,7 +62,7 @@ fn main() -> ! {
 
 #[panic_handler]
 fn panic(info: &PanicInfo) -> ! {
-    // TODO: 安全にグローバル変数を使ってメッセージを出力します
+    // TODO: 安全にグローバル変数を使ってメッセージを出力する
 
     loop {}
 }

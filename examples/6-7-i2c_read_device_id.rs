@@ -1,9 +1,9 @@
-//! 8-7 加速度センサ/I2Cのサンプルコードです。
+//! 6-7 加速度センサ/I2Cのサンプルコードです。
 //! I2CでLIS3DHからデバイスIDを取得します。
 //!
 //! ### 実行方法
 //! ```sh
-//! $ cargo hf2 --example i2c_read_device_id
+//! $ cargo hf2 --example 6-7-i2c_read_device_id
 //! ```
 
 #![no_std]
@@ -32,7 +32,7 @@ fn main() -> ! {
     );
 
     let mut sets = wio::Pins::new(peripherals.PORT).split();
-    // UARTドライバオブジェクトを初期化します
+    // UARTドライバオブジェクトを初期化する
     let mut serial = sets.uart.init(
         &mut clocks,
         115200.hz(),
@@ -41,9 +41,9 @@ fn main() -> ! {
         &mut sets.port,
     );
 
-    // TODO: I2Cドライバオブジェクトを初期化します
+    // TODO: I2Cドライバオブジェクトを初期化する
 
-    // TODO: LIS3DH のデバイスIDを取得します
+    // TODO: LIS3DHのデバイスIDを取得する
 
     loop {}
 }

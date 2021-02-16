@@ -1,9 +1,9 @@
-//! 9-4 Wio TerminalのLCDにHello World!のサンプルコードです。
+//! 7-4 Wio TerminalのLCDにHello World!のサンプルコードです。
 //! Wio Terminal の LCD に `Hello Wio Terminal!` と表示します。
 //!
 //! ### 実行方法
 //! ```sh
-//! $ cargo hf2 --example hello_lcd
+//! $ cargo hf2 --example 7-4-hello_lcd
 //! ```
 
 #![no_std]
@@ -34,11 +34,11 @@ fn main() -> ! {
     let mut delay = Delay::new(core.SYST, &mut clocks);
     let mut sets = Pins::new(peripherals.PORT).split();
 
-    // TODO: ディスプレイドライバを初期化します
+    // TODO: ディスプレイドライバを初期化する
 
-    // TODO: LCD を黒色で塗りつぶします
+    // TODO: LCDを黒色で塗りつぶす
 
-    // TODO: 画面情報に「Hello Wio Terminal!」と表示します
+    // TODO: 画面情報に「Hello Wio Terminal!」と表示する
 
     loop {}
 }

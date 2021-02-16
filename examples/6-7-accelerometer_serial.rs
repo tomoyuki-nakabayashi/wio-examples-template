@@ -1,9 +1,9 @@
-//! 8-7 加速度センサ/I2Cのサンプルコードです。
+//! 6-7 加速度センサ/I2Cのサンプルコードです。
 //! 1秒ごとに加速度センサから値を読み出します。
 //!
 //! ### 実行方法
 //! ```sh
-//! $ cargo hf2 --example accelerometer_serial
+//! $ cargo hf2 --example 6-7-accelerometer_serial
 //! ```
 
 #![no_std]
@@ -23,7 +23,7 @@ use wio::prelude::*;
 #[entry]
 fn main() -> ! {
     let mut peripherals = Peripherals::take().unwrap();
-    // クロックを初期化します
+    // クロックを初期化する
     let core = CorePeripherals::take().unwrap();
     let mut clocks = GenericClockController::with_external_32kosc(
         peripherals.GCLK,
@@ -36,7 +36,7 @@ fn main() -> ! {
     let mut sets = wio::Pins::new(peripherals.PORT).split();
     let mut delay = Delay::new(core.SYST, &mut clocks);
 
-    // UARTドライバオブジェクトを初期化します
+    // UARTドライバオブジェクトを初期化する
     let mut serial = sets.uart.init(
         &mut clocks,
         115200.hz(),
@@ -45,7 +45,7 @@ fn main() -> ! {
         &mut sets.port,
     );
 
-    // TODO: 加速度センサドライバオブジェクトを初期化します
+    // 加速度センサドライバオブジェクトを初期化する
     let mut accel = sets.accelerometer.init(
         &mut clocks,
         peripherals.SERCOM4,
@@ -53,9 +53,9 @@ fn main() -> ! {
         &mut sets.port,
     );
 
-    // TODO: デバイスIDを取得します。0x33 が格納されています。
+    // TODO: デバイスIDを取得、0x33が格納されている
 
-    // TODO: 1秒毎に加速度センサから読み取った値をシリアルに出力します
+    // TODO: 1秒ごとに加速度センサから読み取った値をシリアルに出力する
     loop {
 
     }

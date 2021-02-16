@@ -1,9 +1,9 @@
-//! 8-3 シリアル入出力/UARTのサンプルコードです。
+//! 6-3 シリアル入出力/UARTのサンプルコードです。
 //! ホストPCのシリアルターミナルに入力した内容をそのまま出力します
 //!
 //! ### 実行方法
 //! ```sh
-//! $ cargo hf2 --example echo
+//! $ cargo hf2 --example 6-3-echo
 //! ```
 
 #![no_std]
@@ -21,7 +21,7 @@ use wio::{entry, Pins, Sets};
 #[entry]
 fn main() -> ! {
     let mut peripherals = Peripherals::take().unwrap();
-    // クロックを初期化します
+    // クロックを初期化する
     let mut clocks = GenericClockController::with_external_32kosc(
         peripherals.GCLK,
         &mut peripherals.MCLK,
@@ -30,7 +30,7 @@ fn main() -> ! {
         &mut peripherals.NVMCTRL,
     );
 
-    // UARTドライバオブジェクトを初期化します
+    // UARTドライバオブジェクトを初期化する
     let mut sets: Sets = Pins::new(peripherals.PORT).split();
     let mut serial = sets.uart.init(
         &mut clocks,
@@ -40,15 +40,15 @@ fn main() -> ! {
         &mut sets.port,
     );
 
-    // 「hello world」と出力します
+    // 「hello world」と出力する
     for c in b"hello world\n".iter() {
         nb::block!(serial.write(*c)).unwrap();
     }
-    // 「this is UART example!」と出力します
+    // 「this is UART example!」と出力する
     writeln!(&mut serial, "this is {} example!", "UART").unwrap();
 
     loop {
-        // TODO: 受信したデータをそのまま送信します
+        // TODO: 受信したデータをそのまま送信する
         
     }
 }

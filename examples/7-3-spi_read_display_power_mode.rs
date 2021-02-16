@@ -1,9 +1,9 @@
-//! 9-3 LCD/SPIのサンプルコードです。
+//! 7-3 LCD/SPIのサンプルコードです。
 //! SPIでILI9341からDisplay Power Modeを取得します。
 //!
 //! ### 実行方法
 //! ```sh
-//! $ cargo hf2 --example spi_read_device_id
+//! $ cargo hf2 --example 7-3-spi_read_display_power_mode
 //! ```
 
 #![no_std]
@@ -17,8 +17,8 @@ use wio::entry;
 use wio::hal::clock::GenericClockController;
 use wio::hal::delay::Delay;
 use wio::hal::gpio::*;
-use wio::hal::hal::spi;
 use wio::hal::sercom::*;
+use wio::hal::hal::spi;
 use wio::pac::{CorePeripherals, Peripherals};
 use wio::prelude::*;
 
@@ -37,7 +37,7 @@ fn main() -> ! {
     let mut delay = Delay::new(core.SYST, &mut clocks);
 
     let mut sets = wio::Pins::new(peripherals.PORT).split();
-    // UARTドライバオブジェクトを初期化します
+    // UARTドライバオブジェクトを初期化する
     let mut serial = sets.uart.init(
         &mut clocks,
         115200.hz(),
@@ -46,13 +46,13 @@ fn main() -> ! {
         &mut sets.port,
     );
 
-    // TODO: SPIドライバオブジェクトを初期化します
+    // TODO: SPIドライバオブジェクトを初期化する
 
-    // TODO: その他の制御信号を出力に設定します
+    // TODO: その他の制御信号を出力に設定する
 
     // TODO: 2. ILI9341のハードウェアリセット
 
-    // TODO: 3. Read Display Power Modeコマンド (0x0A) の送信
+    // TODO: 3. Read Display Power Modeコマンド（0x0A）の送信
 
     // TODO: 4. データ出力の読み込み
 

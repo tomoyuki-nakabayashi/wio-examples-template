@@ -1,9 +1,9 @@
-//! 8-4 タイマ/割り込みのサンプルコードです。
+//! 6-4 タイマ/割り込みのサンプルコードです。
 //! 1秒間隔でLEDが点滅します
 //!
 //! ### 実行方法
 //! ```sh
-//! $ cargo hf2 --example busy_wait
+//! $ cargo hf2 --example 6-4-timer_busy_wait
 //! ```
 
 #![no_std]
@@ -23,14 +23,14 @@ use wio_examples::Led;
 fn main() -> ! {
     let mut peripherals = Peripherals::take().unwrap();
 
-    // LEDドライバオブジェクトを初期化します
+    // LEDドライバオブジェクトを初期化する
     let mut sets: Sets = Pins::new(peripherals.PORT).split();
     let mut led = Led::new(sets.user_led, &mut sets.port);
 
-    // TODO: Delay構造体オブジェクトを取得します
+    // TODO: Delay構造体オブジェクトを取得する
 
     loop {
-        // TODO: Lチカのコードを書きます
+        // TODO: Lチカのコードを書く
         
     }
 }
