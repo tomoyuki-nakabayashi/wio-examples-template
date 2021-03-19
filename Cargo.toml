@@ -30,14 +30,9 @@ app = ["microfft", "micromath"]
 # required-features = ["splash"]
 
 [[example]]
-name = "accelerometer_lcd"
-required-features = ["app"]
-
-
-[[example]]
-name = "10-1-stop_watch"
+name = "8-1-stop_watch"
 required-features = ["app"]
 
 [[example]]
-name = "10-2-mic_fft"
+name = "8-2-mic_fft"
 required-features = ["app"]
