@@ -52,7 +52,7 @@ fn main() -> ! {
 
     // TODO: グローバル変数に格納されているNoneを安全にSomeで上書きする
 
-    // TODO: わざとNoneをunwrap()してパニックを発生させる
+    // TODO: 安全にグローバル変数を使ってhello worldを出力する
 
     let none: Option<usize> = None;
     none.unwrap();
