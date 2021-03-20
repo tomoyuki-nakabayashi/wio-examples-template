@@ -26,7 +26,7 @@ app = ["microfft", "micromath"]
 
 # 7章でコメントアウトを外して下さい
 # [[example]]
-# name = "9-4-splash"
+# name = "7-4-splash"
 # required-features = ["splash"]
 
 [[example]]
