@@ -1,2 +1,2 @@
 [template]
-exclude = ["README.md"]
+exclude = ["README.md","examples/assets/*"]
